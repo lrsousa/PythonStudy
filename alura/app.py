@@ -1,4 +1,5 @@
 # -*- coding: UTF-8 -*-
+import re
 
 def procurar(nomes):
     print 'Digite nome a procurar:'
@@ -8,6 +9,13 @@ def procurar(nomes):
         return True
     print 'O nome nao existe na lista'
     return False
+
+def procurar_regex(nomes):
+    print 'Digite nome a expressao regular:'
+    regex = raw_input()
+    nomes_concatenados = ' '.join(nomes)
+    resultados = re.findall(regex, nomes_concatenados)
+    print(resultados)
 
 def alterar(nomes):
     print 'Qual nome vc gostaria de alterar?'
@@ -38,7 +46,8 @@ def menu():
         print '2 para listar'
         print '3 para alterar'
         print '4 para procurar'
-        print '5 para remover'
+        print '5 para procurar com regex'
+        print '6 para remover'
         print '0 para terminar'
         escolha = raw_input()
         if (escolha == '1'):
@@ -50,6 +59,9 @@ def menu():
         if (escolha == '4'):
             procurar(nomes)
         if (escolha == '5'):
+            procurar_regex(nomes)
+        if(escolha == '6'):
             remover(nomes)
+
 
 menu()
